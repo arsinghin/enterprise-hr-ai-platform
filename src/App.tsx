@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import C4Architecture from "./components/C4Architecture";
 import { Employee, Workflow, KafkaEvent, Trace, RAGDoc, AgentReg, McpToolReg, PolicyReg } from "./types";
-import hrAiLogo from "./assets/images/hr_ai_logo_1784812133764.jpg";
+import hrAiLogo from "./assets/images/hr_ai_logo_1784814228634.jpg";
 
 export default function App() {
   // Application Operational States
@@ -341,11 +341,11 @@ export default function App() {
       {/* Dynamic Header */}
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md shadow-indigo-100 border border-indigo-200 flex-shrink-0">
+          <div className="relative h-11 w-11 rounded-xl bg-white shadow-sm border border-slate-200/90 flex items-center justify-center p-1 flex-shrink-0 transition-transform hover:scale-105">
             <img
               src={hrAiLogo}
-              alt="HR AI Logo"
-              className="w-full h-full object-cover"
+              alt="Enterprise HR AI Logo"
+              className="w-full h-full object-contain rounded-lg"
               referrerPolicy="no-referrer"
               id="app-logo-icon"
             />
