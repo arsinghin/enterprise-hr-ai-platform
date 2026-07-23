@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import C4Architecture from "./components/C4Architecture";
 import { Employee, Workflow, KafkaEvent, Trace, RAGDoc, AgentReg, McpToolReg, PolicyReg } from "./types";
+import hrAiLogo from "./assets/images/hr_ai_logo_1784812133764.jpg";
 
 export default function App() {
   // Application Operational States
@@ -283,7 +284,7 @@ export default function App() {
         <div className="flex items-center gap-3">
           <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md shadow-indigo-100 border border-indigo-200 flex-shrink-0">
             <img
-              src="/src/assets/images/hr_ai_logo_1784812133764.jpg"
+              src={hrAiLogo}
               alt="HR AI Logo"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
