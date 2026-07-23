@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Markdown from "react-markdown";
 import {
   Shield,
   Bot,
@@ -462,7 +463,13 @@ export default function App() {
                             : "bg-slate-100 text-slate-800 rounded-tl-none border border-slate-200/60"
                         }`}
                       >
-                        <div className="whitespace-pre-wrap leading-relaxed text-xs">{chat.text}</div>
+                        <div className={`text-xs leading-relaxed space-y-2 ${
+                          chat.sender === "user"
+                            ? "[&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_code]:bg-indigo-700 [&_code]:text-indigo-100 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:font-mono [&_code]:text-[11px] [&_strong]:font-semibold"
+                            : "[&_p]:my-1 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_code]:bg-slate-200/80 [&_code]:text-indigo-900 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:font-mono [&_code]:text-[11px] [&_strong]:font-bold [&_strong]:text-slate-900"
+                        }`}>
+                          <Markdown>{chat.text}</Markdown>
+                        </div>
 
                         {/* If bot response includes control plane metadata, show beautiful traces */}
                         {chat.details && (
