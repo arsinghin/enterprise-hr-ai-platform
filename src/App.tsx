@@ -134,23 +134,36 @@ export default function App() {
   // Fetch initial telemetry & registries
   const fetchAllData = async () => {
     try {
+      const safeJson = async (res: Response) => {
+        if (!res.ok) return null;
+        try {
+          return await res.json();
+        } catch (_) {
+          return null;
+        }
+      };
+
       const [regRes, wfRes, evRes, docRes, obsRes, configRes] = await Promise.all([
-        fetch("/api/registries").then((res) => res.json()),
-        fetch("/api/workflows").then((res) => res.json()),
-        fetch("/api/events").then((res) => res.json()),
-        fetch("/api/documents").then((res) => res.json()),
-        fetch("/api/observability").then((res) => res.json()),
-        fetch("/api/config/export").then((res) => res.json()),
+        fetch("/api/registries").then(safeJson),
+        fetch("/api/workflows").then(safeJson),
+        fetch("/api/events").then(safeJson),
+        fetch("/api/documents").then(safeJson),
+        fetch("/api/observability").then(safeJson),
+        fetch("/api/config/export").then(safeJson),
       ]);
 
-      setRegistries(regRes);
-      setWorkflows(wfRes);
-      setKafkaEvents(evRes);
-      setRagDocs(docRes);
-      setTraces(obsRes.traces);
-      setObservabilityMetrics(obsRes.metrics);
-      setDockerComposeText(configRes.dockerCompose);
-      setKubernetesYamlText(configRes.kubernetesYaml);
+      if (regRes) setRegistries(regRes);
+      if (wfRes) setWorkflows(wfRes);
+      if (evRes) setKafkaEvents(evRes);
+      if (docRes) setRagDocs(docRes);
+      if (obsRes) {
+        if (obsRes.traces) setTraces(obsRes.traces);
+        if (obsRes.metrics) setObservabilityMetrics(obsRes.metrics);
+      }
+      if (configRes) {
+        if (configRes.dockerCompose) setDockerComposeText(configRes.dockerCompose);
+        if (configRes.kubernetesYaml) setKubernetesYamlText(configRes.kubernetesYaml);
+      }
     } catch (err) {
       console.error("Error backing telemetry data:", err);
     }
@@ -231,16 +244,28 @@ export default function App() {
         });
       }
 
-      const data = await response.json();
+      let data: any = null;
+      try {
+        data = await response.json();
+      } catch (parseErr) {
+        throw new Error("Invalid server response format");
+      }
 
-      setChatHistory((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: data.answer,
-          details: data.controlPlane,
-        },
-      ]);
+      if (data && data.answer) {
+        setChatHistory((prev) => [
+          ...prev,
+          {
+            sender: "bot",
+            text: data.answer,
+            details: data.controlPlane,
+          },
+        ]);
+      } else {
+        setChatHistory((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Server connectivity warning. Request returned empty response." },
+        ]);
+      }
 
       // Refetch stats
       fetchAllData();
