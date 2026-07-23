@@ -281,8 +281,14 @@ export default function App() {
       {/* Dynamic Header */}
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-indigo-600 text-white rounded-xl shadow-md shadow-indigo-100">
-            <Bot className="h-6 w-6" id="app-logo-icon" />
+          <div className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md shadow-indigo-100 border border-indigo-200 flex-shrink-0">
+            <img
+              src="/src/assets/images/hr_ai_logo_1784812133764.jpg"
+              alt="HR AI Logo"
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+              id="app-logo-icon"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">
