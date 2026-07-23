@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="#ffffff"/>
+  <rect width="60" height="60" x="2" y="2" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g transform="translate(12, 12) scale(1.666)" fill="none" stroke="url(#brain-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <defs>
+      <linearGradient id="brain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4f46e5" />
+        <stop offset="50%" stop-color="#0284c7" />
+        <stop offset="100%" stop-color="#059669" />
+      </linearGradient>
+    </defs>
+    <!-- Brain outline paths -->
+    <path d="M12 5a3 3 0 0 0-3 3c0 .38.07.74.2 1.07A3 3 0 0 0 8 12c0 .4.08.78.23 1.12A3 3 0 0 0 7 16a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3 3 3 0 0 0-1.23-2.43c.15-.34.23-.72.23-1.12 0-.38-.07-.74-.2-1.07A3 3 0 0 0 15 8a3 3 0 0 0-3-3z"/>
+    <path d="M12 5a3 3 0 0 1 3 3c0 .38-.07.74-.2 1.07A3 3 0 0 1 16 12c0 .4-.08.78-.23 1.12A3 3 0 0 1 17 16a3 3 0 0 1-3 3h-4"/>
+    <path d="M12 5v14"/>
+    <path d="M9.5 9h5"/>
+    <path d="M8.5 13h7"/>
+    <path d="M9.5 16h5"/>
+  </g>
+  <!-- Circuit node glowing dots -->
+  <circle cx="24" cy="20" r="2" fill="#4f46e5"/>
+  <circle cx="40" cy="20" r="2" fill="#4f46e5"/>
+  <circle cx="20" cy="32" r="2" fill="#0284c7"/>
+  <circle cx="44" cy="32" r="2" fill="#0284c7"/>
+  <circle cx="24" cy="44" r="2" fill="#059669"/>
+  <circle cx="40" cy="44" r="2" fill="#059669"/>
+  <circle cx="32" cy="32" r="2.5" fill="#6366f1"/>
+</svg>
