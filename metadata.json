@@ -1,0 +1,6 @@
+{
+  "name": "Enterprise HR AI Platform",
+  "description": "An enterprise-grade, high-fidelity HR AI Platform featuring registry-driven orchestration, AI control planes, MCP, and observability simulation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
