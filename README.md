@@ -150,5 +150,10 @@ Detailed systemic decisions are documented inside the `docs/adr/` directory:
 
 ---
 
+## 🤝 Contributing
+We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) for detailed information on how to get started, report bugs, suggest enhancements, and submit pull requests.
+
+---
+
 ## 📄 License
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
