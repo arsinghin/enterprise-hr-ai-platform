@@ -115,8 +115,8 @@ enterprise-hr-ai/
 
 ### Clone and Launch Dev Environment
 ```bash
-git clone https://github.com/your-org/enterprise-hr-ai.git
-cd enterprise-hr-ai
+git clone https://github.com/arsinghin/enterprise-hr-ai-platform.git
+cd enterprise-hr-ai-platform
 
 # Boot up dependent infrastructure (PostgreSQL, Redis, Qdrant, Kafka, Temporal, Keycloak)
 docker-compose -f docker-compose.infra.yml up -d
