@@ -932,27 +932,33 @@ Is there anything specific in your deductions or payslip break-down you would li
 // Vite Dev Server / Static Production Mounting
 // -------------------------------------------------------------
 async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
-  }
+  try {
+    if (process.env.NODE_ENV !== "production") {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: "spa",
+      });
+      app.use(vite.middlewares);
+    } else {
+      const distPath = path.join(process.cwd(), "dist");
+      app.use(express.static(distPath));
+      app.get("*", (req, res) => {
+        res.sendFile(path.join(distPath, "index.html"));
+      });
+    }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Enterprise HR AI Platform running on http://localhost:${PORT}`);
-  });
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Enterprise HR AI Platform running on http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("Error starting server:", err);
+  }
 }
 
 if (!process.env.VERCEL) {
-  startServer();
+  startServer().catch((err) => {
+    console.error("Unhandled error starting server:", err);
+  });
 }
 
 export default app;

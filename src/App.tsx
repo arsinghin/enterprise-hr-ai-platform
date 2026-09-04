@@ -134,22 +134,24 @@ export default function App() {
   // Fetch initial telemetry & registries
   const fetchAllData = async () => {
     try {
-      const safeJson = async (res: Response) => {
-        if (!res.ok) return null;
+      const safeFetch = async (url: string) => {
         try {
+          const res = await fetch(url);
+          if (!res.ok) return null;
           return await res.json();
-        } catch (_) {
+        } catch (e) {
+          console.warn(`Fetch error for ${url}:`, e);
           return null;
         }
       };
 
       const [regRes, wfRes, evRes, docRes, obsRes, configRes] = await Promise.all([
-        fetch("/api/registries").then(safeJson),
-        fetch("/api/workflows").then(safeJson),
-        fetch("/api/events").then(safeJson),
-        fetch("/api/documents").then(safeJson),
-        fetch("/api/observability").then(safeJson),
-        fetch("/api/config/export").then(safeJson),
+        safeFetch("/api/registries"),
+        safeFetch("/api/workflows"),
+        safeFetch("/api/events"),
+        safeFetch("/api/documents"),
+        safeFetch("/api/observability"),
+        safeFetch("/api/config/export"),
       ]);
 
       if (regRes) setRegistries(regRes);
