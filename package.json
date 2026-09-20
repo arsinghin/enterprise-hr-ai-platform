@@ -1,5 +1,6 @@
 {
   "name": "react-example",
+  "author": "AR Singh",
   "private": true,
   "version": "0.0.0",
   "type": "module",
